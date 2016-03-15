@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:hbase-export-snapshot="uri:oozie:hbase-export-snapshot-action:0.1" elementFormDefault="qualified"
+           targetNamespace="uri:oozie:hbase-export-snapshot-action:0.1">
+
+    <xs:element name="hbase-export-snapshot" type="hbase-export-snapshot:ACTION"/>
+
+    <xs:complexType name="ACTION">
+        <xs:sequence>
+                <xs:element name="job-tracker" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="name-node" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="snapshot-name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="destination-uri" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="num-mappers" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="configuration" type="hbase-export-snapshot:CONFIGURATION" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CONFIGURATION">
+        <xs:sequence>
+            <xs:element name="property" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string"/>
+                        <xs:element name="value" minOccurs="1" maxOccurs="1" type="xs:string"/>
+                        <xs:element name="description" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
