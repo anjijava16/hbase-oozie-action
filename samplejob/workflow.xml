@@ -1,0 +1,23 @@
+<workflow-app xmlns="uri:oozie:workflow:0.3" name="exportsnapshot-wf">
+    <start to="exportsnapshot-node"/>
+    <action name="exportsnapshot-node">
+        <hbase-export-snapshot xmlns="uri:oozie:hbase-export-snapshot-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <snapshot-name>emp-12212</snapshot-name>
+            <destination-uri>/user/ubuntu/snapshots</destination-uri>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+        </hbase-export-snapshot>
+        <ok to="end"/>
+        <error to="fail"/>
+    </action>
+    <kill name="fail">
+        <message>export snapshot failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="end"/>
+</workflow-app>
