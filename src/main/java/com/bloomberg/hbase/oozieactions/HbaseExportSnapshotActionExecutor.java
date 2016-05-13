@@ -4,39 +4,22 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.ConnectException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.fs.permission.AccessControlException;
-import org.apache.hadoop.mapred.JobClient;
 import org.apache.hadoop.mapred.JobConf;
-import org.apache.hadoop.mapred.JobID;
-import org.apache.hadoop.mapred.RunningJob;
 import org.apache.hadoop.util.DiskChecker;
-import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 import org.apache.hadoop.hbase.snapshot.ExportSnapshot;
 
 import org.apache.oozie.action.ActionExecutor;
-import org.apache.oozie.action.ActionExecutorException.ErrorType;
 import org.apache.oozie.action.ActionExecutorException;
 import org.apache.oozie.client.WorkflowAction;
-import org.apache.oozie.service.ConfigurationService;
-import org.apache.oozie.service.HadoopAccessorException;
 import org.apache.oozie.service.HadoopAccessorService;
 import org.apache.oozie.service.Services;
-import org.apache.oozie.service.WorkflowAppService;
-import org.apache.oozie.util.ELEvaluationException;
-import org.apache.oozie.util.LogUtils;
-import org.apache.oozie.util.PropertiesUtils;
 import org.apache.oozie.util.XConfiguration;
 import org.apache.oozie.util.XLog;
 import org.apache.oozie.util.XmlUtils;
@@ -63,7 +46,7 @@ public class HbaseExportSnapshotActionExecutor extends ActionExecutor {
     private static final String HADOOP_NAME_NODE = "fs.default.name";
     private static final String HADOOP_JOB_NAME = "mapred.job.name";
 
-    private static final Set<String> DISALLOWED_PROPERTIES = new HashSet<String>();
+    private static final Set<String> DISALLOWED_PROPERTIES = new HashSet<>();
 
     static {
         DISALLOWED_PROPERTIES.add(HADOOP_USER);
@@ -110,7 +93,7 @@ public class HbaseExportSnapshotActionExecutor extends ActionExecutor {
     public void start(Context context, WorkflowAction action) throws ActionExecutorException
     {
         LOG = XLog.resetPrefix(LOG);
-        LogUtils.setLogInfo(action, new XLog.Info());
+        //LogUtils.setLogInfo(action, new XLog.Info());
         try {
 
             // Parse action configuration
