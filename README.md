@@ -5,6 +5,15 @@ This repository contains custom oozie actions to simplify hbase workflows
 In order to manually install this custom action on a
 [BACH](https://github.com/bloomberg/chef-bach) cluster:
 
+This project require maven 3.3 or above. 
+```
+wget http://mirrors.sonic.net/apache/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz
+tar -zxf apache-maven-3.3.3-bin.tar.gz
+sudo cp -R apache-maven-3.3.3 /usr/local
+sudo ln -s /usr/local/apache-maven-3.3.3/bin/mvn /usr/bin/mvn
+mvn -version
+```
+
 Build the project into a jar:
 ```
 $ mvn package
