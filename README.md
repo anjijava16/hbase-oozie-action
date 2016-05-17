@@ -76,6 +76,12 @@ $ sudo service oozie stop
 Rebuild the oozie war:
 ```
 $ /usr/hdp/current/oozie-server/bin/oozie-setup.sh prepare-war
+..
+..
+..
+New Oozie WAR file with added 'ExtJS library, JARs' at /usr/hdp/2.3.4.0-3485/oozie/oozie-server//webapps/oozie.war
+INFO: Oozie is ready to be started
+
 ```
 
 Start oozie:
