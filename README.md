@@ -88,3 +88,10 @@ Start oozie:
 ```
 $ sudo service oozie start
 ```
+
+Set the correct oozie url and run the workflow
+
+```
+$ export OOZIE_URL=http://f-bcpc-vm2.bcpc.example.com:11000/oozie
+$  oozie job -config job.properties -run
+```
