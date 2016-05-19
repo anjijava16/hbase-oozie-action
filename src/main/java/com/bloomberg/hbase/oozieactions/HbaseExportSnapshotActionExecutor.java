@@ -140,7 +140,9 @@ public class HbaseExportSnapshotActionExecutor extends ActionExecutor {
                 LOG.warn("Overriding the action job end notification URI");
             }
             conf.set("job.end.notification.url", callback);
-
+            
+            context.setStartData("-", "-", "-");
+            
             String[] args = new String[5];
             args[0] = "-snapshot";
             args[1] = snapshotName;
