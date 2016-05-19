@@ -23,6 +23,8 @@ Copy the file in `target/hbaseoozie-1.0-SNAPSHOT.jar` to
 `/usr/hdp/current/oozie-server/libext/hbaseoozie-1.0-SNAPSHOT.jar` on the node
 where the oozie server is installed.
 
+Also, copy hbase jars (hbase-client-1.1.1.2.3.0.0-2557.jar, hbase-common-1.1.1.2.3.0.0-2557.jar, hbase-server-1.1.1.2.3.0.0-2557.jar) to libext folder as they would be needed by the action. 
+
 Edit the `/etc/oozie/conf/oozie-site.xml` file adding the following lines:
 ```
     <property>
